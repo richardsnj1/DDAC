@@ -4,6 +4,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using DDAC.Areas.Identity.Data;
@@ -59,6 +60,11 @@ namespace DDAC.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "You must enter your name first before submitting your form!")]
+            [StringLength(256, ErrorMessage = "You must enter the value between 6 - 256 chars", MinimumLength = 6)]
+            [Display(Name = "Your Full Name")] //label
+            public string userfullname { get; set; }
         }
 
         private async Task LoadAsync(DDACUser user)
@@ -70,7 +76,8 @@ namespace DDAC.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                userfullname = user.userFullName
             };
         }
 
@@ -111,6 +118,11 @@ namespace DDAC.Areas.Identity.Pages.Account.Manage
                 }
             }
 
+            if (Input.userfullname != user.userFullName)
+            {
+                user.userFullName = Input.userfullname;
+            }
+            await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
