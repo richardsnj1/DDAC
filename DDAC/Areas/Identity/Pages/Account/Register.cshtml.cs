@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DDAC.Areas.Identity.Pages.Account
 {
@@ -31,13 +32,14 @@ namespace DDAC.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<DDACUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<DDACUser> userManager,
             IUserStore<DDACUser> userStore,
             SignInManager<DDACUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,13 +47,23 @@ namespace DDAC.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
-        [BindProperty]
+		public SelectList RoleSelectList = new SelectList(
+        new List<SelectListItem>
+        {
+        new SelectListItem { Selected =true, Text = "Select Role", Value = ""},
+        new SelectListItem { Selected =true, Text = "Teacher", Value = "Teacher"},
+		new SelectListItem { Selected =true, Text = "Parent", Value = "Parent"},
+		}, "Value", "Text", 1);
+
+
+		/// <summary>
+		///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+		///     directly from your code. This API may change or be removed in future releases.
+		/// </summary>
+		[BindProperty]
         public InputModel Input { get; set; }
 
         /// <summary>
@@ -104,10 +116,15 @@ namespace DDAC.Areas.Identity.Pages.Account
             [StringLength(256, ErrorMessage = "You must enter the value between 6 - 256 chars", MinimumLength = 6)]
             [Display(Name = "Full Name")] //label
             public string userfullname { get; set; }
-        }
+
+			[Required(ErrorMessage = "You must select your role first before submitting your form!")]
+			[Display(Name = "User Role")]
+			public string userrole { set; get; }
+
+		}
 
 
-        public async Task OnGetAsync(string returnUrl = null)
+		public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -124,7 +141,8 @@ namespace DDAC.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     userFullName = Input.userfullname,
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    userRole = Input.userrole
                 };
                 //var user = CreateUser();
 
@@ -134,6 +152,18 @@ namespace DDAC.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    bool roleresult = await _roleManager.RoleExistsAsync("Teacher");
+                    if (!roleresult)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("Teacher"));
+                    }
+                    roleresult = await _roleManager.RoleExistsAsync("Parent");
+                    if (!roleresult)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("Parent"));
+                    }
+                    await _userManager.AddToRoleAsync(user, Input.userrole);
+
                     //_logger.LogInformation("User created a new account with password.");
 
                     //var userId = await _userManager.GetUserIdAsync(user);

@@ -8,7 +8,9 @@ var connectionString = builder.Configuration.GetConnectionString("DDACContextCon
 
 builder.Services.AddDbContext<DDACContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<DDACUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<DDACContext>();
+builder.Services.AddDefaultIdentity<DDACUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DDACContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -11,5 +11,7 @@ public class DDACUser : IdentityUser
 {
     [PersonalData]
     public string userFullName { get; set; }
+	[PersonalData]
+	public string userRole { get; set; }
 }
 
