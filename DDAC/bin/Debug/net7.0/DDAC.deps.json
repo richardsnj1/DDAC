@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "DDAC/1.0.0": {
         "dependencies": {
+          "AWSSDK.SimpleNotificationService": "3.7.200.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.9",
           "Microsoft.AspNetCore.Identity.UI": "7.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9",
@@ -16,6 +17,25 @@
         },
         "runtime": {
           "DDAC.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.200.7": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.200.7"
+          }
+        }
+      },
+      "AWSSDK.SimpleNotificationService/3.7.200.7": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.200.7"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SimpleNotificationService.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.200.7"
+          }
         }
       },
       "Azure.Core/1.24.0": {
@@ -2589,6 +2609,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.7.200.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FxjBjBbPs4ra7S9LNg3Fju12C6iKIbEXmtS+WXXxXG4aQsvMABKmnU2Lfbf9LsrDN73qn0Q8clIGIeccXEu7wg==",
+      "path": "awssdk.core/3.7.200.7",
+      "hashPath": "awssdk.core.3.7.200.7.nupkg.sha512"
+    },
+    "AWSSDK.SimpleNotificationService/3.7.200.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o8kjsWtHWIC5h/25525rRYeVKgRXf9jIzX5KPapQIYrKPoITUOjVXWJS7Y1Wvcg49bFxc+O28ndyQpftMt2wuA==",
+      "path": "awssdk.simplenotificationservice/3.7.200.7",
+      "hashPath": "awssdk.simplenotificationservice.3.7.200.7.nupkg.sha512"
     },
     "Azure.Core/1.24.0": {
       "type": "package",

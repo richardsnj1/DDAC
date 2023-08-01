@@ -522,3 +522,5 @@ C:\Users\LENOVO\Documents\APU\Year 3 sem 2\DDAC\Assgnmnt\kerjaan\DDAC\DDAC\obj\D
 C:\Users\LENOVO\Documents\APU\Year 3 sem 2\DDAC\Assgnmnt\kerjaan\DDAC\DDAC\obj\Debug\net7.0\DDAC.pdb
 C:\Users\LENOVO\Documents\APU\Year 3 sem 2\DDAC\Assgnmnt\kerjaan\DDAC\DDAC\obj\Debug\net7.0\DDAC.genruntimeconfig.cache
 C:\Users\LENOVO\Documents\APU\Year 3 sem 2\DDAC\Assgnmnt\kerjaan\DDAC\DDAC\obj\Debug\net7.0\ref\DDAC.dll
+D:\Elden Zheng\APU\Year 3\Sem 6\DDAC\code\DDAC\DDAC\bin\Debug\net7.0\AWSSDK.Core.dll
+D:\Elden Zheng\APU\Year 3\Sem 6\DDAC\code\DDAC\DDAC\bin\Debug\net7.0\AWSSDK.SimpleNotificationService.dll
