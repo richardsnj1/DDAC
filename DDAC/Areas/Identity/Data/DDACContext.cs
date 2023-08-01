@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using DDAC.Models;
 
 namespace DDAC.Data;
 
@@ -19,4 +20,6 @@ public class DDACContext : IdentityDbContext<DDACUser>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+    public DbSet<DDAC.Models.Activities> Activities { get; set; } = default!;
 }
