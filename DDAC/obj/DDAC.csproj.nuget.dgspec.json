@@ -1,34 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj": {}
+    "D:\\Elden Zheng\\APU\\Year 3\\Sem 6\\DDAC\\code\\DDAC\\DDAC\\DDAC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj": {
+    "D:\\Elden Zheng\\APU\\Year 3\\Sem 6\\DDAC\\code\\DDAC\\DDAC\\DDAC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj",
+        "projectUniqueName": "D:\\Elden Zheng\\APU\\Year 3\\Sem 6\\DDAC\\code\\DDAC\\DDAC\\DDAC.csproj",
         "projectName": "DDAC",
-        "projectPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\obj\\",
+        "projectPath": "D:\\Elden Zheng\\APU\\Year 3\\Sem 6\\DDAC\\code\\DDAC\\DDAC\\DDAC.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\Elden Zheng\\APU\\Year 3\\Sem 6\\DDAC\\code\\DDAC\\DDAC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

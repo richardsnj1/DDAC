@@ -10,6 +10,7 @@ namespace DDAC.Controllers
     public class SNSbroadcastController : Controller
     {
         private const string topicARN = "arn:aws:sns:us-east-1:606895753313:ABCareNotification";
+        private const string topicARNAnnounce = "arn:aws:sns:us-east-1:606895753313:ABCareNewAlert";
 
         //get keys from appsettings.json
         private List<string> getKeys()
@@ -50,6 +51,15 @@ namespace DDAC.Controllers
                 };
                 SubscribeResponse response = await agent.SubscribeAsync(request);
                 ViewBag.subscriptionSuccessID = response.ResponseMetadata.RequestId;
+
+                SubscribeRequest request1 = new SubscribeRequest
+                {
+                    TopicArn = topicARNAnnounce,
+                    Protocol = "Email",
+                    Endpoint = email
+                };
+                SubscribeResponse response1 = await agent.SubscribeAsync(request1);
+
                 return View();
             }
             catch (AmazonSimpleNotificationServiceException ex)
