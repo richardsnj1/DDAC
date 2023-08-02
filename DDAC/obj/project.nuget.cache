@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QIVrn7LJxBos8URXVOqB8ZdEsVXcv+OPSYP3qVlP0HxsyGfH3oCmfyd9qblrMS8QzbDEYBrYJkiBLJNT7M+rCA==",
+  "dgSpecHash": "i8mIRhwmRUOJaSCt6uGkcln0DLd4VhCE2yLGmhW2qpyxaVeafWfT52VA8u8InlEPzg87hS4PT6e9hqjugFoxYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\DDAC.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\awssdk.core\\3.7.200.7\\awssdk.core.3.7.200.7.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\awssdk.simplenotificationservice\\3.7.200.7\\awssdk.simplenotificationservice.3.7.200.7.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

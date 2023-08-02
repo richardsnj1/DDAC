@@ -1,0 +1,47 @@
+﻿@model Activities
+
+@{
+    ViewData["Title"] = "EditActivities";
+}
+
+
+<h1>Edit Activities</h1>
+<br />
+<hr />
+<br />
+<form method="post" asp-action="UpdateActivities" asp-controller="Activities">
+    <table border="1">
+        <tr>
+            <th><label asp-for="activityId"></label> </th>
+            <td>
+                <input asp-for="activityId" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <th><label asp-for="parentName"></label> </th>
+            <td>
+                <input asp-for="parentName" placeholder="Jono"/>
+                <span asp-validation-for="parentName"></span>
+            </td>
+        </tr>
+        <tr>
+            <th><label asp-for="activityName"></label> </th>
+            <td>
+                <input asp-for="activityName" />
+                <span asp-validation-for="activityName"></span>
+            </td>
+        </tr>
+        <tr>
+            <th><label asp-for="date"></label> </th>
+            <td>
+                <input asp-for="date" />
+                <span asp-validation-for="date"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+                <button class="btn-primary">Edit Activity</button>
+            </td>
+        </tr>
+    </table>
+</form>

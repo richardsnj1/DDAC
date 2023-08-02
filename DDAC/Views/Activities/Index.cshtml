@@ -1,43 +1,36 @@
-﻿@model DDAC.Models.Activities
-
+﻿@model List<Activities>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<h4>Activities</h4>
+<h1>Activity List</h1>
+<br/>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="parentName" class="control-label"></label>
-                <input asp-for="parentName" class="form-control" />
-                <span asp-validation-for="parentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="activityName" class="control-label"></label>
-                <input asp-for="activityName" class="form-control" />
-                <span asp-validation-for="activityName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="date" class="control-label"></label>
-                <input asp-for="date" class="form-control" />
-                <span asp-validation-for="date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<br/>
+<a asp-action="AddActivities" asp-controller="Activities">Add new activity</a>
+<br />
+<hr />
+<table border="1">
+    <tr style="">
+        <th>Activity ID</th>
+        <th>Activity Name</th>
+        <th>Parent Name</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach(var activity in Model)
+    {
+        <tr>
+            <td>@activity.activityId</td>
+            <td>@activity.activityName</td>
+            <td>@activity.parentName</td>
+            <td>@activity.date</td>
+            <form method="post">
+            <td><button style="btn-primary" asp-action="EditActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Edit</button></td>
+            <td><button style="btn-primary" asp-action="DeleteActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Delete</button></td>
+            </form>
+        </tr>
+    }
+</table>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -7,10 +7,17 @@ namespace DDAC.Models
         [Key]
         public int activityId { get; set; }
 
+        [Required]
+        [Display(Name = "Parent Name")]
         public string parentName { get; set; }
 
+        [Required]
+        [Display(Name = "Activity Name")]
         public string activityName { get; set; }
 
-        public DateTime date { get; set; }
+        [Required]
+        [Display(Name = "Activity Date")]
+        [DataType(DataType.Date)]
+        public string date { get; set; }
     }
 }

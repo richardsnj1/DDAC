@@ -1,0 +1,44 @@
+﻿@model Activities
+@*using DDAC.Models;*@
+
+@{
+    ViewData["Title"] = "AddActivities";
+}
+<center>
+    <h1>Add Activities</h1>
+    <br/>
+    <hr />
+    <br />
+    <form method="post" asp-action="AddActivities" asp-controller="Activities">
+        <table border="1">
+            <tr>
+                <th><label asp-for="parentName"></label> </th>
+                <td>
+                    <input asp-for="parentName" />
+                    <span asp-validation-for="parentName"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="activityName"></label> </th>
+                <td>
+                    <input asp-for="activityName"/>
+                    <span asp-validation-for="activityName"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="date"></label> </th>
+                <td>
+                    <input asp-for="date" />
+                    <span asp-validation-for="date"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <button class="btn-primary">Add New Activity</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</center>
+
