@@ -22,6 +22,10 @@ namespace DDAC.Controllers
         {
             return View();
         }
+        public IActionResult EditActivites()
+        {
+            return View();
+        }
 
         //AddActivities
 
