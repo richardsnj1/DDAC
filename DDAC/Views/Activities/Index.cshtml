@@ -14,7 +14,6 @@
     <tr style="">
         <th>Activity ID</th>
         <th>Activity Name</th>
-        <th>Parent Name</th>
         <th>Date</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -24,7 +23,6 @@
         <tr>
             <td>@activity.activityId</td>
             <td>@activity.activityName</td>
-            <td>@activity.parentName</td>
             <td>@activity.date</td>
             <form method="post">
             <td><button style="btn-primary" asp-action="EditActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Edit</button></td>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\DDAC.csproj": {}
+    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\DDAC.csproj": {
+    "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\DDAC.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj",
         "projectName": "DDAC",
-        "projectPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\DDAC.csproj",
+        "projectPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\DDAC.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC2\\DDAC\\DDAC\\obj\\",
+        "outputPath": "C:\\Users\\LENOVO\\Documents\\APU\\Year 3 sem 2\\DDAC\\Assgnmnt\\kerjaan\\DDAC\\DDAC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

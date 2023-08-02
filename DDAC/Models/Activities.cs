@@ -8,10 +8,6 @@ namespace DDAC.Models
         public int activityId { get; set; }
 
         [Required]
-        [Display(Name = "Parent Name")]
-        public string parentName { get; set; }
-
-        [Required]
         [Display(Name = "Activity Name")]
         public string activityName { get; set; }
 
