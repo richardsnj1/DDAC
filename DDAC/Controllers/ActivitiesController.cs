@@ -12,9 +12,16 @@ namespace DDAC.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchActivity)
         {
             List<Activities> activitieslist = await _context.Activities.ToListAsync();
+
+            //filtering
+            if (!string.IsNullOrEmpty(searchActivity))
+            {
+                activitieslist = activitieslist.Where(a => a.activityName.Contains(searchActivity)).ToList();
+            }
+
             return View(activitieslist);
         }
 
