@@ -34,8 +34,8 @@ namespace DDAC.Controllers
             {
                 _context.HealthRecords.Add(health);
                 await _context.SaveChangesAsync();
-                TempData["record"] = "Record Updated";
-                return RedirectToAction("Index", "Health");
+                TempData["record"] = "Sick Reported";
+                return RedirectToAction("Index", "Home");
             }
             return View("Index");
         }

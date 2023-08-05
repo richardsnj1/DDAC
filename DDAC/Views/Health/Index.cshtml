@@ -1,4 +1,8 @@
-﻿@model List<HealthRecords>
+﻿@using Microsoft.AspNetCore.Identity
+@using DDAC.Areas.Identity.Data
+
+@inject UserManager<DDACUser> UserManager
+@model List<HealthRecords>
 @{
     ViewData["Title"] = "Index";
 }
@@ -13,18 +17,17 @@
 <br />
 <hr />
 <br />
-<p><a asp-action="AddRecord">Add Record</a></p>
-<br />
-<hr />
-<br/>
 
 <table border="1">
     <tr style="">
         <th>Record ID</th>
         <th>Child Name</th>
         <th>Date</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        @if (UserManager.GetUserName(User) == "test123@gmail.com")
+        {
+            <th>Edit</th>
+            <th>Delete</th>
+        }
     </tr>
     @foreach (var Health in Model)
     {
@@ -32,10 +35,13 @@
             <td>@Health.recordID</td>
             <td>@Health.childName</td>
             <td>@Health.sickDate</td>
-            <form method="post">
-                <td><button style="btn-primary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
-                <td><button style="btn-primary" asp-action="DeleteRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Delete</button></td>
-            </form>
+            @if (UserManager.GetUserName(User) == "test123@gmail.com")
+            {
+                <form method="post">
+                    <td><button style="btn-primary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
+                    <td><button style="btn-primary" asp-action="DeleteRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Delete</button></td>
+                </form>
+            }
         </tr>
     }
 </table>

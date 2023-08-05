@@ -1,8 +1,33 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using DDAC.Areas.Identity.Data
+
+@inject SignInManager<DDACUser> SignInManager
+@inject UserManager<DDACUser> UserManager
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (UserManager.GetUserName(User) == "test123@gmail.com")
+    {
+        <div class="text-center">
+			<h1 class="display-4">Welcome Admin</h1>
+        </div>
+    }
+    else if (User.IsInRole("Parent"))
+    {
+        <div class="text-center">
+            <h1 class="display-4">Welcome Parent</h1>
+        </div>
+    }
+    else if (User.IsInRole("Teacher"))
+    {
+        <div class="text-center">
+			<h1 class="display-4">Welcome Teacher</h1>
+        </div>
+    }
+}else{
+    <div class="text-center">
+        <h1 class="display-4">Please Sign In</h1>
+    </div>
+}

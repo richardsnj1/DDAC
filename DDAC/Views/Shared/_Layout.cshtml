@@ -2,6 +2,7 @@
 @using DDAC.Areas.Identity.Data
 
 @inject SignInManager<DDACUser> SignInManager
+@inject UserManager<DDACUser> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,29 +45,54 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="Index">Enroll</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Activity Page</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="SNSbroadcast" asp-action="Index">Newsletter</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Announcement" asp-action="Announce">Announce New Activities</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="S3Activity" asp-action="Index">Upload Activity Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="AllStudent">Student List</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="Index">Student Health Records</a>
-                            </li>
+
+                            @if (UserManager.GetUserName(User) == "test123@gmail.com")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="AllStudent">Student List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="SNSbroadcast" asp-action="BroadCastMessage">Broadcast Newsletter</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Announcement" asp-action="Announce">Announce New Activities</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="S3Activity" asp-action="Index">Upload Activity Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="Index">Student Health Records</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("Teacher"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Activity Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="AllStudent">Student List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="Index">Student Health Records</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("Parent"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="Index">Enroll</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Activity Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="AddRecord">Report Sick</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="SNSbroadcast" asp-action="Index">Newsletter</a>
+                                </li>
+                            }
                         }
                         else
                         {

@@ -7,10 +7,13 @@
 <br/>
 <hr />
 <br/>
-<a asp-action="AddActivities" asp-controller="Activities">Add new activity</a>
-<br />
-<hr />
-<br/>
+@if (User.IsInRole("Teacher"))
+{
+    <a asp-action="AddActivities" asp-controller="Activities">Add new activity</a>
+    <br />
+    <hr />
+    <br/>
+}
 <form>
     <label>Search Activity: </label> &nbsp; &nbsp;
     <input type="text" name="searchActivity" placeholder="e.g. Eat" />&nbsp; &nbsp;
@@ -23,8 +26,11 @@
         <th>Activity ID</th>
         <th>Activity Name</th>
         <th>Date</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        @if (User.IsInRole("Teacher"))
+        {
+            <th>Edit</th>
+            <th>Delete</th>
+        }
     </tr>
     @foreach(var activity in Model)
     {
@@ -32,10 +38,13 @@
             <td>@activity.activityId</td>
             <td>@activity.activityName</td>
             <td>@activity.date</td>
-            <form method="post">
-            <td><button style="btn-primary" asp-action="EditActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Edit</button></td>
-            <td><button style="btn-primary" asp-action="DeleteActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Delete</button></td>
-            </form>
+            @if (User.IsInRole("Teacher"))
+            {
+                <form method="post">
+                    <td><button style="btn-primary" asp-action="EditActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Edit</button></td>
+                    <td><button style="btn-primary" asp-action="DeleteActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Delete</button></td>
+                </form>
+            }
         </tr>
     }
 </table>
