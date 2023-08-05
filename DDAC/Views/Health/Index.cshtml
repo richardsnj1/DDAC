@@ -1,0 +1,42 @@
+﻿@model List<HealthRecords>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["enrolled"] != null)
+{
+    <script>
+        alert(@Json.Serialize(TempData["enrolled"]));
+    </script>
+}
+<h1>Health Records for student</h1>
+<br />
+<hr />
+<br />
+<p><a asp-action="AddRecord">Add Record</a></p>
+<br />
+<hr />
+<br/>
+
+<table border="1">
+    <tr style="">
+        <th>Record ID</th>
+        <th>Child Name</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var Health in Model)
+    {
+        <tr>
+            <td>@Health.recordID</td>
+            <td>@Health.childName</td>
+            <td>@Health.sickDate</td>
+            <form method="post">
+                <td><button style="btn-primary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
+                <td><button style="btn-primary" asp-action="DeleteRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Delete</button></td>
+            </form>
+        </tr>
+    }
+</table>
+
