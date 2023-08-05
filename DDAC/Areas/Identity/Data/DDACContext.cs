@@ -23,4 +23,6 @@ public class DDACContext : IdentityDbContext<DDACUser>
 
     public DbSet<DDAC.Models.Activities> Activities { get; set; } = default!;
     public DbSet<DDAC.Models.Enroll> Enroll { get; set; } = default!;
+
+    public DbSet<DDAC.Models.Attendance> Attendance { get; set; } = default!;
 }

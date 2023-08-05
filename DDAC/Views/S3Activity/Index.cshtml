@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<center>
+    <h1>Upload Activity Picture</h1>
+    <br/>
+    <hr/>
+    <br />
+    <form asp-action="ActivityUploadImage" asp-controller="S3Activity" method="post" enctype="multipart/form-data">
+        Choose your activity picture : <input type="file" name="activityImage" multiple/>
+        <br/>
+        <br />
+        <button class="btn-primary" name="submit">Upload Image</button>
+    </form>
+</center>

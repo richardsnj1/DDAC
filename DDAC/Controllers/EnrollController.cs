@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DDAC.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DDAC.Controllers
 {
@@ -16,6 +17,24 @@ namespace DDAC.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> AllStudent(string searchStudent)
+        {
+            //var attdate = await _context.Enroll.Select(e => e.attDate).ToListAsync();
+            //if (attdate.IsNullOrEmpty) { 
+
+            //}
+            List<Enroll> studentlist = await _context.Enroll.ToListAsync();
+
+            //filtering
+            if (!string.IsNullOrEmpty(searchStudent))
+            {
+                studentlist = studentlist.Where(a => a.childName.Contains(searchStudent)).ToList();
+            }
+
+            return View(studentlist);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Enrollment(Enroll enroll)

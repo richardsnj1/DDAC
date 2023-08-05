@@ -1,0 +1,36 @@
+﻿
+@model List<Enroll>
+@{
+    ViewData["Title"] = "AllStudent";
+}
+
+<h1>children List</h1>
+<br />
+<hr />
+<br />
+<form>
+    <label>Search Children: </label> &nbsp; &nbsp;
+    <input type="text" name="searchStudent" placeholder="e.g. John" />&nbsp; &nbsp;
+    <button class="btn-primary" type="submit">Search children</button>
+</form>
+
+<br />
+<table border="1">
+    <tr style="">
+        <th>children ID</th>
+        <th>children Name</th>
+
+    </tr>
+    @foreach (var children in Model)
+    {
+        <tr>
+            <td>
+                @children.enrollID
+            </td>
+            <td>
+               @children.childName
+            </td>
+            
+        </tr>
+    }
+</table>
