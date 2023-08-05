@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DDAC.Data;
 using DDAC.Areas.Identity.Data;
+using Amazon.XRay.Recorder.Handlers.AwsSdk;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DDACContextConnection") ?? throw new InvalidOperationException("Connection string 'DDACContextConnection' not found.");
@@ -15,6 +16,7 @@ builder.Services.AddDefaultIdentity<DDACUser>(options => options.SignIn.RequireC
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+AWSSDKHandler.RegisterXRayForAllServices();
 
 var app = builder.Build();
 
@@ -26,6 +28,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseXRay("ABCare");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
