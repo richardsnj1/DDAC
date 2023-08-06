@@ -9,12 +9,12 @@
 <br />
 <hr />
 <br />
-<form method="post" asp-action="UpdateActivities" asp-controller="Activities">
+<form method="post" asp-action="UpdateActivities" asp-controller="Activities" enctype="multipart/form-data">
     <table border="1">
         <tr>
             <th><label asp-for="activityId"></label> </th>
             <td>
-                <input asp-for="activityId" readonly/>
+                <input asp-for="activityId" readonly />
             </td>
         </tr>
         <tr>

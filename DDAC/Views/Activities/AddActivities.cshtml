@@ -6,7 +6,7 @@
 }
 <center>
     <h1>Add Activities</h1>
-    <br/>
+    <br />
     <hr />
     <br />
     <form method="post" asp-action="AddActivities" asp-controller="Activities">
@@ -14,7 +14,7 @@
             <tr>
                 <th><label asp-for="activityName"></label> </th>
                 <td>
-                    <input asp-for="activityName"/>
+                    <input asp-for="activityName" />
                     <span asp-validation-for="activityName"></span>
                 </td>
             </tr>
@@ -30,6 +30,7 @@
                     <button class="btn-primary">Add New Activity</button>
                 </td>
             </tr>
+
         </table>
     </form>
 

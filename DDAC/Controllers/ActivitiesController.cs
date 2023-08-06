@@ -12,8 +12,10 @@ namespace DDAC.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(string searchActivity)
-        {
+        public async Task<IActionResult> Index(string searchActivity) 
+        { 
+ 
+        
             List<Activities> activitieslist = await _context.Activities.ToListAsync();
 
             //filtering
@@ -26,10 +28,6 @@ namespace DDAC.Controllers
         }
 
         public IActionResult AddActivities()
-        {
-            return View();
-        }
-        public IActionResult EditActivites()
         {
             return View();
         }
@@ -101,7 +99,7 @@ namespace DDAC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View("EditActivities", activities);
+            return View("AddActivities", activities);
         }
 
     }

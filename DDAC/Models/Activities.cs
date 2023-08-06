@@ -15,5 +15,6 @@ namespace DDAC.Models
         [Display(Name = "Activity Date")]
         [DataType(DataType.Date)]
         public string date { get; set; }
+
     }
 }

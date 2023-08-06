@@ -77,6 +77,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="Index">Student Health Records</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="S3Activity" asp-action="Index">Upload Activity Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="AllStudent">Student List</a>
+                                </li>
                             }
                             else if (User.IsInRole("Parent"))
                             {

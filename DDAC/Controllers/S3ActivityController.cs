@@ -5,6 +5,7 @@ using Amazon.S3.Model;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.Net.Mime;
 
 namespace DDAC.Controllers
 {
@@ -87,5 +88,131 @@ namespace DDAC.Controllers
 
         }
 
+        public async Task<IActionResult> ShowImage()
+        {
+            List<string> values = getKeys();
+            var awsS3client = new AmazonS3Client(values[0], values[1], values[2], RegionEndpoint.USEast1);
+
+            List<S3Object> images = new List<S3Object>();
+
+            try
+            {
+                string token = null;
+                do
+                {
+                    //create List object request to the S3
+                    ListObjectsRequest request = new ListObjectsRequest
+                    {
+                        BucketName = S3BucketName
+                    };
+
+                    //getting response (images) back from the S3
+                    ListObjectsResponse response = await awsS3client.ListObjectsAsync(request).ConfigureAwait(false);
+                    images.AddRange(response.S3Objects);
+                    token = response.NextMarker;
+                } while (token != null);
+            }
+            catch (AmazonS3Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return View(images);
+        }
+
+
+        public async Task<IActionResult> deleteImage(string ImageName)
+        {
+            //1. add credential for action
+            List<string> values = getKeys();
+            AmazonS3Client agent = new AmazonS3Client(values[0], values[1], values[2], RegionEndpoint.USEast1);
+
+            try
+            {
+                //create a delete request 
+                DeleteObjectRequest deleteRequest = new DeleteObjectRequest
+                {
+                    BucketName = S3BucketName,
+                    Key = ImageName
+                };
+
+                await agent.DeleteObjectAsync(deleteRequest);
+                return RedirectToAction("ShowImage", "S3Activity");
+            }
+            catch (AmazonS3Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            //return RedirectToAction("ShowImage", "S3Activity");
+        }
+
+        public async Task<IActionResult> tempImage(string ImageName)
+        {
+            List<string> values = getKeys();
+            AmazonS3Client agent = new AmazonS3Client(values[0], values[1], values[2], RegionEndpoint.USEast1);
+
+            try
+            {
+                GetPreSignedUrlRequest request = new GetPreSignedUrlRequest
+                {
+                    BucketName = S3BucketName,
+                    Key = ImageName,
+                    Expires = DateTime.Now.AddMinutes(1)
+                };
+
+                ViewBag.tempImage = agent.GetPreSignedURL(request);
+                return View();
+            }
+            catch (AmazonS3Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        public async Task<IActionResult> downloadImage(string ImageName)
+        {
+            List<string> values = getKeys();
+            AmazonS3Client agent = new AmazonS3Client(values[0], values[1], values[2], RegionEndpoint.USEast1);
+
+            Stream downloadImageStream;
+            try
+            {
+                GetObjectRequest request = new GetObjectRequest
+                {
+                    BucketName = S3BucketName,
+                    Key = ImageName,
+                };
+                GetObjectResponse response = await agent.GetObjectAsync(request);
+
+                using (var responseStream = response.ResponseStream)
+                {
+                    downloadImageStream = new MemoryStream();
+                    await responseStream.CopyToAsync(downloadImageStream);
+                    downloadImageStream.Position = 0;
+                }
+
+            }
+            catch (AmazonS3Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+
+            string imageFile = Path.GetFileName(ImageName);
+
+            Response.Headers.Add(
+                "Content-Disposition", new ContentDisposition
+                {
+                    FileName = imageFile,
+                    Inline = false
+                }.ToString()
+            );
+
+            return File(downloadImageStream, "image/jpg");
+
+        }
+
+
     }
+
 }

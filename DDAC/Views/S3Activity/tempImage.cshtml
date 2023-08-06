@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "tempImage";
+}
+
+<center>
+    <img src="@ViewBag.tempImage" width="400" height="500" />
+    <form asp-action="showImage" asp-controller="S3Activity">
+        <button type="submit" class="btn-primary">Back to activity image</button>
+    </form>
+
+</center>
+

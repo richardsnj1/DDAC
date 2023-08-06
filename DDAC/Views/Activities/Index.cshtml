@@ -4,15 +4,15 @@
 }
 
 <h1>Activity List</h1>
-<br/>
+<br />
 <hr />
-<br/>
+<br />
 @if (User.IsInRole("Teacher"))
 {
     <a asp-action="AddActivities" asp-controller="Activities">Add new activity</a>
     <br />
     <hr />
-    <br/>
+    <br />
 }
 <form>
     <label>Search Activity: </label> &nbsp; &nbsp;
@@ -32,7 +32,8 @@
             <th>Delete</th>
         }
     </tr>
-    @foreach(var activity in Model)
+
+    @foreach (var activity in Model)
     {
         <tr>
             <td>@activity.activityId</td>
@@ -42,7 +43,7 @@
             {
                 <form method="post">
                     <td><button style="btn-primary" asp-action="EditActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Edit</button></td>
-                    <td><button style="btn-primary" asp-action="DeleteActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Delete</button></td>
+                <td><button style="btn-primary" asp-action="DeleteActivities" asp-controller="Activities" asp-route-fid="@activity.activityId">Delete</button></td>
                 </form>
             }
         </tr>
