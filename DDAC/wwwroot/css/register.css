@@ -1,0 +1,239 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@400&display=swap");
+
+p {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+.image1 {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    right: 50%;
+}
+
+.imgsize {
+    position: relative;
+    left: 55%;
+    /* top: 4vh; */
+    width: 155% !important;
+    height: 95% !important;
+    overflow: hidden;
+}
+
+.container-fluid {
+    width: 100%;
+    /* height: 100% !important; */
+}
+
+.logintext {
+    font-family: Lexend;
+    color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Lexend;
+    color: #000;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+    a:hover {
+        text-decoration: none !important;
+    }
+
+span {
+    font-family: Poppins;
+    color: #000;
+}
+
+/* .container {
+  position: fixed;
+  top: 10vh;
+  margin: auto;
+} */
+
+/* .mid {
+  margin: auto;
+} */
+
+/* .signin {
+  font-family: Lexend;
+  color: #000;
+}
+
+
+
+.forgot {
+  color: #000 !important;
+} */
+
+input,
+button{
+    font-family: Lexend;
+    background-color: transparent !important;
+    border: 1px solid #000 !important;
+    /* width: 30%; */
+    height: 45px !important;
+    color: #000 !important;
+    border-radius: 10px !important;
+}
+
+/* .btn-primary {
+  background-color: #000;
+  color: #242424;
+  font-family: Poppins;
+  border-radius: 20px;
+  box-shadow: 10px #242424 !important;
+}
+
+.btn-primary:hover {
+  background-color: #242424;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid #000;
+  color: #000;
+}*/
+
+.btn-secondary:hover {
+    background-color: #000;
+    /* border: none; */
+    /* color: #242424; */
+}
+
+label {
+    color: #000 !important;
+}
+
+.content {
+    padding: 7rem 0;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.half,
+.half .container > .row {
+    height: 100vh;
+    min-height: 700px;
+}
+
+@media (max-width: 991.98px) {
+    .half .bg {
+        height: 200px;
+    }
+}
+
+.half .contents {
+    /* background: #f6f7fc; */
+}
+
+.half .contents,
+.half .bg {
+    width: 50%;
+}
+
+@media (max-width: 1199.98px) {
+    .half .contents,
+    .half .bg {
+        width: 100%;
+    }
+}
+
+.half .contents .form-control,
+.half .bg .form-control {
+    border: none;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    height: 54px;
+    /* background: #fff; */
+}
+
+    .half .contents .form-control:active,
+    .half .contents .form-control:focus,
+    .half .bg .form-control:active,
+    .half .bg .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+
+.half .bg {
+    background-size: cover;
+    background-position: center;
+}
+
+.half a {
+    /* color: #888; */
+    text-decoration: underline;
+}
+
+.half .btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.control {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .control .caption {
+        position: relative;
+        top: 0.2rem;
+        /* color: #888; */
+    }
+
+    .control input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    /* background: #e6e6e6; */
+    border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+    .imgsize {
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+.bg {
+    background-image: url("/Assets/daycare.jpg");
+}
