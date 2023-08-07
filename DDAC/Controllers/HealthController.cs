@@ -1,7 +1,9 @@
 ﻿using DDAC.Data;
 using DDAC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DDAC.Controllers
 {
@@ -18,17 +20,20 @@ namespace DDAC.Controllers
             List<HealthRecords> recordlist = await _context.HealthRecords.ToListAsync();
             return View(recordlist);
         }
-        public IActionResult AddRecord()
+		[Authorize(Roles = "Parent")]
+		public IActionResult AddRecord()
         {
             return View();
         }
-        public IActionResult EditRecord()
+		[Authorize(Roles = "Admin")]
+		public IActionResult EditRecord()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddData(HealthRecords health)
+		[Authorize(Roles = "Parent")]
+		public async Task<IActionResult> AddData(HealthRecords health)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +46,8 @@ namespace DDAC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteRecord(int? rid)
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> DeleteRecord(int? rid)
         {
             if (rid == null)
             {
@@ -63,7 +69,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditRecord(int? rid)
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> EditRecord(int? rid)
         {
             if (rid == null)
             {
@@ -84,7 +91,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateRecords(HealthRecords records)
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> UpdateRecords(HealthRecords records)
         {
             if (ModelState.IsValid)
             {

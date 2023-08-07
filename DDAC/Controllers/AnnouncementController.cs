@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -29,6 +31,7 @@ namespace DDAC.Controllers
 
             return keys;
         }
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Announce()
         {
             string apiUrl = "https://etxn0affei.execute-api.us-east-1.amazonaws.com/Development";
@@ -39,7 +42,7 @@ namespace DDAC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Inform the user of success (you can customize the message)
+                    // Inform the user of success
                     ViewBag.Message = "Email Sent!";
                 }
                 else

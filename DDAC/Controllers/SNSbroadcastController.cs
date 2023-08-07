@@ -72,8 +72,8 @@ namespace DDAC.Controllers
         {
             return View();
         }
-
-        //broadcast
+        
+        //broadcast the message to the subscriber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> processBroadcast(string subjecttitle, string broadcastText)
@@ -97,7 +97,7 @@ namespace DDAC.Controllers
                     TempData["emailsent"] = "Email sent out to your customer";
 
                     // Redirect to a different page
-                    return RedirectToAction("Index", "Home"); // Replace "Index" and "Home" with the desired action and controller names
+                    return RedirectToAction("Index", "Home"); // Return to the home page
                 }
                 catch (AmazonSimpleNotificationServiceException ex)
                 {

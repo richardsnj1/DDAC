@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DDAC.Data;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace DDAC.Controllers
 {
@@ -33,11 +35,11 @@ namespace DDAC.Controllers
             }
 
             return View(studentlist);
-        }
-
-        [HttpPost]
+		}
+		[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Enrollment(Enroll enroll)
+		[Authorize(Roles = "Parent")]
+		public async Task<IActionResult> Enrollment(Enroll enroll)
         {
             if (ModelState.IsValid)
             {
