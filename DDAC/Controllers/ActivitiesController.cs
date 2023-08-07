@@ -28,7 +28,7 @@ namespace DDAC.Controllers
 
             return View(activitieslist);
         }
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public IActionResult AddActivities()
         {
             return View();
@@ -38,7 +38,7 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> AddActivities(Activities activities)
         {
             if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> DeleteActivities(int? fid)
         {
             if (fid == null)
@@ -74,7 +74,7 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> EditActivities(int? fid)
         {
             if (fid == null)
@@ -96,7 +96,7 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> UpdateActivities(Activities activities)
         {
             if (ModelState.IsValid)

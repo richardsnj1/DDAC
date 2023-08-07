@@ -4,33 +4,41 @@
     ViewData["Title"] = "AllStudent";
 }
 
-<h1>children List</h1>
-<br />
-<hr />
-<br />
-<form>
-    <label>Search Children: </label> &nbsp; &nbsp;
-    <input type="text" name="searchStudent" placeholder="e.g. John" />&nbsp; &nbsp;
-    <button class="btn-primary" type="submit">Search children</button>
-</form>
+<center>
+    <h1>Children List</h1>
+    <br />
+    <hr />
+    <br />
+    <form>
+        <label>Search Children: </label> &nbsp; &nbsp;
+        <input type="text" name="searchStudent" placeholder="e.g. John" />&nbsp; &nbsp;
+        <button class="btn-primary" type="submit">Search children</button>
+    </form>
 
-<br />
-<table border="1">
-    <tr style="">
-        <th>children ID</th>
-        <th>children Name</th>
-
-    </tr>
-    @foreach (var children in Model)
-    {
-        <tr>
-            <td>
-                @children.enrollID
-            </td>
-            <td>
-               @children.childName
-            </td>
-            
-        </tr>
-    }
-</table>
+    <br />
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr style="">
+                <th>children ID</th>
+                <th>children Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var children in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="ms-3">
+                            <p action="text-muted mb-0"> @children.enrollID</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ms-3">
+                            <p action="text-muted mb-0"> @children.childName</p>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</center>

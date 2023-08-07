@@ -6,6 +6,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
 @if (SignInManager.IsSignedIn(User))
 {
     @if (User.IsInRole("Admin"))
@@ -27,7 +30,37 @@
         </div>
     }
 }else{
-    <div class="text-center">
-        <h1 class="display-4">Welcome to ABCare, Sign in to use the web</h1>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to ABCare</h1>
+            <p>Providing a Safe and Fun Environment for Children to Learn and Grow</p>
+            <a href="#features" class="btn btn-primary btn-lg">Learn More</a>
+        </div>
+    </div>
+
+    <div id="features" class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education & Learning</h3>
+                    <p>We focus on early childhood education, providing a stimulating environment for learning and development.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Play & Fun</h3>
+                    <p>We believe in the power of play to foster creativity, social skills, and physical development.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-heart"></i>
+                    <h3>Caring & Supportive</h3>
+                    <p>Our caring staff provides a safe and nurturing environment, ensuring each child feels loved and supported.</p>
+                </div>
+            </div>
+        </div>
     </div>
 }

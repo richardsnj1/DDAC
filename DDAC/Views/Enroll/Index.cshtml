@@ -5,31 +5,62 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
 
-<h1>Enroll Child</h1>
-<br />
-<hr />
-<br />
-<form method="post" asp-action="Enrollment" asp-controller="Enroll">
-    <table>
-        <tr>
-            <th><label asp-for="parentID"></label> </th>
-            <td>
-                <input asp-for="parentID" value="@UserManager.GetUserId(User)" readonly />
-            </td>
-        </tr>
-        <tr>
-            <th><label asp-for="childName"></label></th>
-            <td>
-                <input asp-for="childName" />
-                <span asp-validation-for="childName"></span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="text-align:center">
-                <button>Enroll Child</button>
-            </td>
-        </tr>
-    </table>
-</form>
+    .container {
+        padding-top: 50px;
+    }
+
+    h1 {
+        color: #252626;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        text-align: left;
+    }
+</style>
+<center>
+    <div class="container">
+        <h1>Enroll Child</h1>
+        <br />
+        <br />
+        <form method="post" asp-action="Enrollment" asp-controller="Enroll">
+            <table class="table table-bordered">
+                <tr>
+                    <th><label asp-for="parentID"></label> </th>
+                    <td>
+                        <input class="form-control" asp-for="parentID" value="@UserManager.GetUserId(User)" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <th><label asp-for="childName"></label></th>
+                    <td>
+                        <input class="form-control" asp-for="childName" />
+                        <span class="text-danger" asp-validation-for="childName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <button class="btn btn-secondary">Enroll Child</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</center>
 

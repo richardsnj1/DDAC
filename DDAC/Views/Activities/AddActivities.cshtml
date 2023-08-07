@@ -4,35 +4,64 @@
 @{
     ViewData["Title"] = "AddActivities";
 }
-<center>
-    <h1>Add Activities</h1>
-    <br />
-    <hr />
-    <br />
-    <form method="post" asp-action="AddActivities" asp-controller="Activities">
-        <table border="1">
-            <tr>
-                <th><label asp-for="activityName"></label> </th>
-                <td>
-                    <input asp-for="activityName" />
-                    <span asp-validation-for="activityName"></span>
-                </td>
-            </tr>
-            <tr>
-                <th><label asp-for="date"></label> </th>
-                <td>
-                    <input asp-for="date" />
-                    <span asp-validation-for="date"></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    <button class="btn-primary">Add New Activity</button>
-                </td>
-            </tr>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
 
+    .container {
+        padding-top: 50px;
+    }
+
+    h1 {
+        color: #252626;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        text-align: left;
+    }
+</style>
+<div class="container">
+    <div class="text-center">
+        <h1>Add Activities</h1>
+        <br>
+        <hr>
+        <br>
+    </div>
+    <form method="post" asp-action="AddActivities" asp-controller="Activities">
+        <table class="table table-bordered">
+            <tr>
+                <th><label asp-for="activityName"></label></th>
+                <td>
+                    <input class="form-control" asp-for="activityName" />
+                    <span asp-validation-for="activityName" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label asp-for="date"></label></th>
+                <td>
+                    <input class="form-control" asp-for="date" type="date" />
+                    <span asp-validation-for="date" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <button class="btn btn-primary">Add New Activity</button>
+                </td>
+            </tr>
         </table>
     </form>
-
-</center>
+</div>
 

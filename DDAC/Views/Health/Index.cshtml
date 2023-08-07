@@ -13,36 +13,55 @@
         alert(@Json.Serialize(TempData["enrolled"]));
     </script>
 }
-<h1>Health Records for student</h1>
-<br />
-<hr />
-<br />
 
-<table border="1">
-    <tr style="">
-        <th>Record ID</th>
-        <th>Child Name</th>
-        <th>Date</th>
-        @if (User.IsInRole("Admin"))
-        {
-            <th>Edit</th>
-            <th>Delete</th>
-        }
-    </tr>
-    @foreach (var Health in Model)
-    {
+<center>
+
+    <h1>Health Records for Student</h1>
+    <br />
+    <hr />
+    <br />
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
         <tr>
-            <td>@Health.recordID</td>
-            <td>@Health.childName</td>
-            <td>@Health.sickDate</td>
+            <th>Record ID</th>
+            <th>Child Name</th>
+            <th>Date</th>
             @if (User.IsInRole("Admin"))
             {
-                <form method="post">
-                    <td><button style="btn-primary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
-                    <td><button style="btn-primary" asp-action="DeleteRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Delete</button></td>
-                </form>
+                <th>Edit</th>
+                <th>Delete</th>
             }
         </tr>
-    }
-</table>
+        </thead>
+        <tbody>
 
+        @foreach (var Health in Model)
+        {
+            <tr>
+                <td>
+                    <div class="ms-3">
+                        <p action="text-muted mb-0"> @Health.recordID</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="ms-3">
+                        <p action="text-muted mb-0"> @Health.childName</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="ms-3">
+                        <p action="text-muted mb-0"> @Health.sickDate</p>
+                    </div>
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <form method="post">
+                        <td><button class="btn-secondary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
+                        <td><button class="btn-secondary" asp-action="DeleteRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Delete</button></td>
+                    </form>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+</center>

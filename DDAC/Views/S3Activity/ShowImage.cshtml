@@ -3,30 +3,79 @@
 @{
     ViewData["Title"] = "ShowImage";
 }
-
-<center>
-    <h1>Display Activity Images</h1>
-    <br />
-    <hr />
-    <br />
-    @foreach (var image in Model)
-    {
-        var imageURL = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
-        <div style="text-align:center; background-color: black; width: 210px;
-            height: 210px; margin: 50px; display: inline-block">
-            <div style="width:100px; height: 100px; padding:5px">
-                <img src="@imageURL" width="200" height="200" />
-            </div>
-            <div>
-				<form method="post">
-					<button type="submit" class="btn-primary" asp-action="downloadImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Download</button>
-                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
-                    {
-                        <button type="submit" class="btn-primary" asp-action="tempImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Show Image</button>
-                        <button asp-action="deleteImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key" type="submit" class="btn-primary">Delete</button>
-                    }
-                </form>
-            </div>
-        </div>
+<style>
+    body {
+        background-color: #f8f9fa;
     }
+
+    .container {
+        padding-top: 50px;
+    }
+
+    h1 {
+        color: #252525;
+    }
+
+    .image-container {
+        text-align: center;
+        background-color: black;
+        width: 210px;
+        height: 210px;
+        margin: 50px;
+        display: inline-block;
+    }
+
+    .image-box {
+        width: 100px;
+        height: 100px;
+        padding: 5px;
+    }
+
+    .image-box img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+<center>
+    <div class="container">
+        <div class="text-center">
+            <h1>Activity Images</h1>
+            <br>
+            <br>
+        </div>
+        <div class="row">
+            @foreach (var image in Model)
+            {
+                var imageURL = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
+
+                <div class="col-sm-3">
+                    <div class="image-container">
+                        <div class="image-box">
+                            <img src="@imageURL" />
+                        </div>
+                        <div>
+                            <form method="post">
+                                <button type="submit" class="btn btn-primary" asp-action="downloadImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Download</button>
+                                @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                                {
+                                    <button type="submit" class="btn btn-primary" asp-action="tempImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Show Image</button>
+                                    <button asp-action="deleteImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key" type="submit" class="btn btn-primary">Delete</button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            }
+        </div>
+    </div>
 </center>
