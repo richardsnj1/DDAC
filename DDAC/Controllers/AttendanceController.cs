@@ -8,8 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DDAC.Controllers
 {
-
-
     public class AttendanceController : Controller
     {
         private readonly DDACContext _context;

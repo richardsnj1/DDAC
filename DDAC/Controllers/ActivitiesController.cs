@@ -2,6 +2,8 @@
 using DDAC.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace DDAC.Controllers
 {
@@ -22,12 +24,12 @@ namespace DDAC.Controllers
             if (!string.IsNullOrEmpty(searchActivity))
             {
                 activitieslist = activitieslist.Where(a => a.activityName.Contains(searchActivity)).ToList();
-            }
+			}
 
             return View(activitieslist);
         }
-
-        public IActionResult AddActivities()
+		[Authorize(Roles = "!Parent")]
+		public IActionResult AddActivities()
         {
             return View();
         }
@@ -36,7 +38,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddActivities(Activities activities)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> AddActivities(Activities activities)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +52,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteActivities(int? fid)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> DeleteActivities(int? fid)
         {
             if (fid == null)
             {
@@ -70,7 +74,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditActivities(int? fid)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> EditActivities(int? fid)
         {
             if (fid == null)
             {
@@ -91,7 +96,8 @@ namespace DDAC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateActivities(Activities activities)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> UpdateActivities(Activities activities)
         {
             if (ModelState.IsValid)
             {

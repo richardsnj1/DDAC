@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace DDAC.Controllers
 {
@@ -35,11 +37,11 @@ namespace DDAC.Controllers
             return keys;
         }
 
-        //ActivityUploadImage
-        [HttpPost]
+		//ActivityUploadImage
+		[HttpPost]
         [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> ActivityUploadImage(List<IFormFile> activityImage)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> ActivityUploadImage(List<IFormFile> activityImage)
         {
             //connection
             List<string> keys = getKeys();
@@ -119,8 +121,8 @@ namespace DDAC.Controllers
             return View(images);
         }
 
-
-        public async Task<IActionResult> deleteImage(string ImageName)
+		[Authorize(Roles = "!Parent")]
+		public async Task<IActionResult> deleteImage(string ImageName)
         {
             //1. add credential for action
             List<string> values = getKeys();

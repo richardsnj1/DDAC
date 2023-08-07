@@ -48,7 +48,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
                             </li>
 
-                            @if (UserManager.GetUserName(User) == "test123@gmail.com")
+                            @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Enroll" asp-action="AllStudent">Student List</a>
@@ -91,6 +91,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Activity Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-action="ShowImage" asp-controller="S3Activity">View Activities Images</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Health" asp-action="AddRecord">Report Sick</a>

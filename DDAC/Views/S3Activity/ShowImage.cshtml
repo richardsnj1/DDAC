@@ -18,11 +18,13 @@
                 <img src="@imageURL" width="200" height="200" />
             </div>
             <div>
-                <form method="post">
-                    <button asp-action="deleteImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key" type="submit" class="btn-primary">Delete</button>
-                    <button type="submit" class="btn-primary" asp-action="downloadImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Download</button>
-                    <button type="submit" class="btn-primary" asp-action="tempImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Show Image</button>
-
+				<form method="post">
+					<button type="submit" class="btn-primary" asp-action="downloadImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Download</button>
+                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                    {
+                        <button type="submit" class="btn-primary" asp-action="tempImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key">Show Image</button>
+                        <button asp-action="deleteImage" asp-controller="S3Activity" asp-route-ImageName="@image.Key" type="submit" class="btn-primary">Delete</button>
+                    }
                 </form>
             </div>
         </div>

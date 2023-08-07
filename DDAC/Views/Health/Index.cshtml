@@ -23,7 +23,7 @@
         <th>Record ID</th>
         <th>Child Name</th>
         <th>Date</th>
-        @if (UserManager.GetUserName(User) == "test123@gmail.com")
+        @if (User.IsInRole("Admin"))
         {
             <th>Edit</th>
             <th>Delete</th>
@@ -35,7 +35,7 @@
             <td>@Health.recordID</td>
             <td>@Health.childName</td>
             <td>@Health.sickDate</td>
-            @if (UserManager.GetUserName(User) == "test123@gmail.com")
+            @if (User.IsInRole("Admin"))
             {
                 <form method="post">
                     <td><button style="btn-primary" asp-action="EditRecord" asp-controller="Health" asp-route-rid="@Health.recordID">Edit</button></td>
