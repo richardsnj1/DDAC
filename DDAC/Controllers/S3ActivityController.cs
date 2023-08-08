@@ -60,7 +60,7 @@ namespace DDAC.Controllers
                 }
                 else if (image.ContentType.ToLower() != "image/png" && image.ContentType.ToLower() != "image/jpeg" && image.ContentType.ToLower() != "image/gif")
                 {
-                    return BadRequest("The file of " + image.FileName + "is not a valid file, please try again");
+                    return BadRequest("The file of " + image.FileName + " is not a valid file, please try again");
                 }
 
                 try
