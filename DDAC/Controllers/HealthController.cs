@@ -83,6 +83,7 @@ namespace DDAC.Controllers
                 return NotFound();
 
             }
+            records.sickDate = records.sickDate.Trim();
 
             return View(records);
 
