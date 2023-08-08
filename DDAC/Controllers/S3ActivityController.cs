@@ -40,7 +40,7 @@ namespace DDAC.Controllers
 		//ActivityUploadImage
 		[HttpPost]
         [ValidateAntiForgeryToken]
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> ActivityUploadImage(List<IFormFile> activityImage)
         {
             //connection
@@ -121,7 +121,7 @@ namespace DDAC.Controllers
             return View(images);
         }
 
-		[Authorize(Roles = "!Parent")]
+		[Authorize(Roles = "Teacher, Admin")]
 		public async Task<IActionResult> deleteImage(string ImageName)
         {
             //1. add credential for action
