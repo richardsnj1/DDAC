@@ -28,6 +28,7 @@ namespace DDAC.Controllers
 
             return View(activitieslist);
         }
+
 		[Authorize(Roles = "Teacher, Admin")]
 		public IActionResult AddActivities()
         {
